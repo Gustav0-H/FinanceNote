@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinanceNote - Alertas CNPJ/CPF</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .top-filters {
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: end;
+        }
+
+        .table-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        table th, table td {
+            padding: 18px 20px;
+        }
+
+        .status-pendente { 
+            background: #fff3cd; 
+            color: #664d03; 
+            padding: 6px 14px; 
+            border-radius: 30px; 
+            font-size: 0.85rem; 
+            font-weight: bold;
+        }
+        .status-realizado { 
+            background: #d1e7dd; 
+            color: #0f5132; 
+            padding: 6px 14px; 
+            border-radius: 30px; 
+            font-size: 0.85rem; 
+            font-weight: bold;
+        }
+
+        .btn-reembolso { background: #e74c3c; color: white; }
+        .btn-ver { background: #3498db; color: white; }
+    </style>
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>Finance<span>Note</span></h2>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="pg2.html" class="nav-item">🏠 Menu Principal</a>
+            <a href="cadastro.html" class="nav-item">📄 Cadastrar Notas</a>
+            <a href="vencidas.html" class="nav-item">⚠️ Notas Vencidas</a>
+            <a href="pesquisa.html" class="nav-item">🔍 Pesquisar Notas</a>
+            <a href="relatorios.html" class="nav-item">📊 Relatórios</a>
+            <a href="inteligente.html" class="nav-item">🤖 Extração Inteligente</a>
+            <a href="alertas-cnpj.html" class="nav-item active">🚨 Alertas CNPJ</a>
+        </nav>
+        <a href="index.html" class="nav-item" style="margin-top: auto; border-top: 1px solid rgba(255,255,255,0.1);">🚪 Sair</a>
+    </aside>
+
+    <main class="main-content">
+        <div class="page-header">
+            <h1>🚨 Alertas CNPJ/CPF</h1>
+            <p style="color:#666;">Notas emitidas com documento pessoal (CPF) em vez de CNPJ da empresa</p>
+        </div>
+
+        <!-- FILTROS + PESQUISA -->
+        <div class="top-filters">
+            <div style="flex: 2;">
+                <label style="font-weight:600; display:block; margin-bottom:6px;">🔍 Pesquisar</label>
+                <input type="text" id="searchInput" placeholder="Número da nota, fornecedor ou documento..." 
+                       style="width:100%; padding:14px; border-radius:12px; border:2px solid #ddd;" 
+                       onkeyup="filtrarTabela()">
+            </div>
+
+            <div>
+                <label style="font-weight:600; display:block; margin-bottom:6px;">Período</label>
+                <select id="filterPeriodo" onchange="filtrarTabela()" style="padding:14px; border-radius:12px; border:2px solid #ddd;">
+                    <option value="">Todos os períodos</option>
+                    <option value="7">Últimos 7 dias</option>
+                    <option value="30" selected>Últimos 30 dias</option>
+                    <option value="90">Últimos 90 dias</option>
+                </select>
+            </div>
+
+            <div>
+                <label style="font-weight:600; display:block; margin-bottom:6px;">Status</label>
+                <select id="filterStatus" onchange="filtrarTabela()" style="padding:14px; border-radius:12px; border:2px solid #ddd;">
+                    <option value="">Todos</option>
+                    <option value="pendente">Reembolso Pendente</option>
+                    <option value="realizado">Reembolso Realizado</option>
+                </select>
+            </div>
+
+            <button onclick="limparFiltros()" style="padding:14px 28px; background:#555; color:white; border:none; border-radius:12px; cursor:pointer;">
+                Limpar Filtros
+            </button>
+        </div>
+
+        <!-- TABELA -->
+        <div class="table-card">
+            <table style="width:100%; border-collapse:collapse;">
+                <thead>
+                    <tr style="background:#f8f9fa;">
+                        <th>NF / ID</th>
+                        <th>Fornecedor</th>
+                        <th>Valor</th>
+                        <th>Vencimento</th>
+                        <th>Documento na Nota</th>
+                        <th>Status Reembolso</th>
+                        <th style="text-align:center;">Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabelaAlertas"></tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- MODAL -->
+    <div id="modalReembolso" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:2000; align-items:center; justify-content:center;">
+        <div style="background:white; padding:30px; border-radius:20px; width:100%; max-width:520px;">
+            <h2 id="modalTitle"></h2>
+            <div id="modalBody" style="margin:20px 0; line-height:1.6;"></div>
+            
+            <div style="margin-top:25px; display:flex; gap:15px;">
+                <button onclick="fecharModal()" 
+                        style="flex:1; background:#ddd; color:#333; padding:16px; border:none; border-radius:12px; font-weight:bold;">
+                    Fechar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dados de exemplo atualizados
+        let alertas = [
+            {
+                id: "8741",
+                fornecedor: "Material Express Ltda",
+                valor: 3840,
+                vencimento: "2026-04-05",
+                documentoNota: "CPF 123.456.789-00",
+                status: "pendente",
+                reembolsoInfo: null
+            },
+            {
+                id: "8729",
+                fornecedor: "Tech Solutions",
+                valor: 1290,
+                vencimento: "2026-04-02",
+                documentoNota: "CPF 987.654.321-00",
+                status: "realizado",
+                reembolsoInfo: {
+                    data: "2026-04-03",
+                    valor: 1290,
+                    cpfDestino: "CPF 987.654.321-00",
+                    destino: "Banco Itaú • Ag 1234 • C/C 56789-0"
+                }
+            },
+            {
+                id: "8712",
+                fornecedor: "Papelaria Central",
+                valor: 875,
+                vencimento: "2026-03-28",
+                documentoNota: "CPF 111.222.333-44",
+                status: "pendente",
+                reembolsoInfo: null
+            },
+            {
+                id: "8698",
+                fornecedor: "Logística Rápida",
+                valor: 2450,
+                vencimento: "2026-03-20",
+                documentoNota: "CPF 555.666.777-88",
+                status: "realizado",
+                reembolsoInfo: {
+                    data: "2026-03-22",
+                    valor: 2450,
+                    cpfDestino: "CPF 555.666.777-88",
+                    destino: "Banco Itaú • Ag 1234 • C/C 56789-0"
+                }
+            }
+        ];
+
+        function renderTabela(dados) {
+            const tbody = document.getElementById('tabelaAlertas');
+            tbody.innerHTML = '';
+
+            dados.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>NF-${item.id}</strong></td>
+                    <td>${item.fornecedor}</td>
+                    <td>R$ ${item.valor.toLocaleString('pt-BR')}</td>
+                    <td>${item.vencimento}</td>
+                    <td><strong>${item.documentoNota}</strong></td>
+                    <td>
+                        ${item.status === 'pendente' 
+                            ? `<span class="status-pendente">Pendente</span>` 
+                            : `<span class="status-realizado">Realizado</span>`}
+                    </td>
+                    <td style="text-align:center;">
+                        ${item.status === 'pendente' 
+                            ? `<button onclick="abrirModalEmitir(${item.id}, ${item.valor})" class="btn-reembolso" style="padding:10px 20px; border:none; border-radius:10px; cursor:pointer;">Emitir Reembolso</button>`
+                            : `<button onclick="verReembolso(${item.id})" class="btn-ver" style="padding:10px 20px; border:none; border-radius:10px; cursor:pointer;">Ver Reembolso</button>`}
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+
+            if (dados.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:40px; color:#777;">Nenhum alerta encontrado</td></tr>`;
+            }
+        }
+
+        function filtrarTabela() {
+            const termo = document.getElementById('searchInput').value.toLowerCase();
+            const periodo = document.getElementById('filterPeriodo').value;
+            const statusFiltro = document.getElementById('filterStatus').value;
+
+            let filtrados = alertas.filter(item => {
+                const matchTexto = 
+                    item.fornecedor.toLowerCase().includes(termo) ||
+                    `nf-${item.id}`.includes(termo) ||
+                    item.documentoNota.toLowerCase().includes(termo);
+
+                let matchPeriodo = true;
+                if (periodo) {
+                    const hoje = new Date();
+                    const venc = new Date(item.vencimento);
+                    const diffDias = Math.floor((hoje - venc) / (1000*60*60*24));
+                    matchPeriodo = diffDias <= parseInt(periodo);
+                }
+
+                const matchStatus = !statusFiltro || item.status === statusFiltro;
+
+                return matchTexto && matchPeriodo && matchStatus;
+            });
+
+            renderTabela(filtrados);
+        }
+
+        function limparFiltros() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('filterPeriodo').value = '30';
+            document.getElementById('filterStatus').value = '';
+            filtrarTabela();
+        }
+
+        function abrirModalEmitir(id, valor) {
+            // (Mantido simples - você pode expandir depois)
+            alert(`Emitindo reembolso para NF-${id} no valor de R$ ${valor.toLocaleString('pt-BR')}`);
+            // Aqui você pode adicionar lógica de salvar depois
+        }
+
+        function verReembolso(id) {
+            const item = alertas.find(a => a.id === id.toString());
+            if (!item || !item.reembolsoInfo) return;
+
+            document.getElementById('modalTitle').innerHTML = `📄 Reembolso - NF-${id}`;
+            document.getElementById('modalBody').innerHTML = `
+                <p><strong>Documento usado na nota:</strong> ${item.documentoNota}</p>
+                <p><strong>Data do reembolso:</strong> ${item.reembolsoInfo.data}</p>
+                <p><strong>Valor reembolsado:</strong> R$ ${item.reembolsoInfo.valor.toLocaleString('pt-BR')}</p>
+                <p><strong>CPF/CNPJ de destino:</strong> ${item.reembolsoInfo.cpfDestino}</p>
+                <p><strong>Conta de destino:</strong> ${item.reembolsoInfo.destino}</p>
+                <p style="margin-top:20px; color:#2ecc71; font-weight:bold;">✅ Reembolso realizado com sucesso</p>
+            `;
+            document.getElementById('modalReembolso').style.display = 'flex';
+        }
+
+        function fecharModal() {
+            document.getElementById('modalReembolso').style.display = 'none';
+        }
+
+        // Inicializa
+        window.onload = () => renderTabela(alertas);
+    </script>
+</body>
+</html>
