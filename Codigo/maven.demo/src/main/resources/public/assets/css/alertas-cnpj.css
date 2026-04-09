@@ -1,0 +1,205 @@
+/* 1. DECLARAÇÃO DE VARIÁVEIS (Essencial para as cores funcionarem) */
+:root {
+    --bg-body: #f0f2f5;
+    --sidebar-dark: #1a2a3a;
+    --text-main: #333;
+    --text-muted: #bdc3c7;
+    --accent-green: #2ecc71;
+    --accent-blue: #3498db;
+    --sidebar-active: #34495e;
+    --white: #ffffff;
+}
+
+/* 2. RESET E ESTRUTURA BASE */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: var(--bg-body);
+    display: flex; /* Faz a sidebar ficar ao lado do conteúdo */
+    height: 100vh;
+    overflow: hidden;
+    color: var(--text-main);
+}
+
+/* 3. SIDEBAR */
+.sidebar {
+    width: 260px;
+    background-color: var(--sidebar-dark);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+}
+
+.sidebar-header {
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.sidebar-header h2 span {
+    color: var(--accent-green);
+}
+
+.sidebar-nav {
+    flex-grow: 1;
+    padding: 20px 0;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    text-decoration: none;
+    color: var(--text-muted);
+    transition: 0.3s;
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+}
+
+.nav-item.active {
+    background-color: var(--sidebar-active);
+    color: white;
+    border-left: 4px solid var(--accent-green);
+}
+
+.logout-link {
+    margin-top: auto;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* 4. CONTEÚDO PRINCIPAL */
+.main-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 40px;
+}
+
+.page-header {
+    margin-bottom: 30px;
+}
+
+.page-header h1 {
+    font-size: 2.2rem;
+    color: var(--sidebar-dark);
+    margin: 0;
+}
+
+/* 5. FILTROS E PESQUISA */
+.top-filters {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    margin-bottom: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-end;
+}
+
+.search-box { flex: 2; min-width: 250px; }
+.filter-group { flex: 1; min-width: 150px; }
+
+.top-filters label {
+    font-weight: 700;
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+    color: var(--sidebar-dark);
+    text-transform: uppercase;
+}
+
+.top-filters input, .top-filters select {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 12px;
+    border: 2px solid #eee;
+    font-family: inherit;
+    box-sizing: border-box; /* Importante para não quebrar a largura */
+}
+
+.btn-clear {
+    padding: 14px 25px;
+    background: #555;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+/* 6. TABELA */
+.table-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th {
+    background: #f8f9fa;
+    color: var(--sidebar-dark);
+    text-align: left;
+    padding: 18px 20px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+table td {
+    padding: 18px 20px;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+/* Status e Botões */
+.status-pendente { 
+    background: #fff3cd; color: #664d03; 
+    padding: 6px 14px; border-radius: 30px; font-weight: bold; font-size: 0.8rem;
+}
+
+.status-realizado { 
+    background: #d1e7dd; color: #0f5132; 
+    padding: 6px 14px; border-radius: 30px; font-weight: bold; font-size: 0.8rem;
+}
+
+.btn-reembolso { background: #e74c3c; color: white; border: none; padding: 10px 18px; border-radius: 10px; cursor: pointer; }
+.btn-ver { background: var(--accent-blue); color: white; border: none; padding: 10px 18px; border-radius: 10px; cursor: pointer; }
+
+/* 7. MODAL */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(5px);
+    z-index: 2000;
+    align-items: center; justify-content: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 35px;
+    border-radius: 24px;
+    width: 90%;
+    max-width: 500px;
+}
+
+.txt-center { text-align: center; }

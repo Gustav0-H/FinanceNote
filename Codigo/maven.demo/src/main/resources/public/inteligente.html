@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinanceNote - Extração Inteligente</title>
+    <link rel="stylesheet" href="assets/css/inteligente.css">
+</head>
+
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>Finance<span>Note</span></h2>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="menu.html" class="nav-item">🏠 Menu Principal</a>
+            <a href="cadastro.html" class="nav-item">📄 Cadastrar Notas</a>
+            <a href="vencidas.html" class="nav-item">⚠️ Notas Vencidas</a>
+			<a href="vencimentos.html" class="nav-item">📅 Vencimentos do Dia</a>
+            <a href="pesquisa.html" class="nav-item">🔍 Pesquisar Notas</a>
+            <a href="relatorios.html" class="nav-item">📊 Relatórios</a>
+			<a href="inteligente.html" class="nav-item active">🤖 Extração Inteligente</a>
+			<a href="alertas-cnpj.html" class="nav-item">🚨 Alertas CNPJ</a>
+        </nav>
+        <a href="index.html" class="nav-item" style="margin-top: auto; border-top: 1px solid rgba(255,255,255,0.1);">🚪 Sair</a>
+    </aside>
+
+    <main class="main-content">
+        <div class="page-header">
+            <h1>🤖 Extração Inteligente de Notas</h1>
+            <p style="color:#666;">Envie a foto ou PDF da nota fiscal e o sistema extrai os dados automaticamente</p>
+        </div>
+
+        <div class="split-container">
+
+            <!-- LADO ESQUERDO - ENVIO DE IMAGEM -->
+            <div class="panel left-panel">
+                <h3 class="card-title">📸 Enviar Imagem da Nota</h3>
+                
+                <div id="uploadArea" class="upload-area">
+                    <h2>📤 Solte a imagem aqui</h2>
+                    <p style="margin:10px 0 20px; color:#777;">ou</p>
+                    <button onclick="document.getElementById('fileInput').click()" 
+                            style="background:#3498db; color:white; border:none; padding:12px 28px; border-radius:12px; cursor:pointer;">
+                        Selecionar Arquivo
+                    </button>
+                    <input type="file" id="fileInput" accept="image/*" style="display:none;" onchange="handleFile(this)">
+                    <p style="font-size:0.85rem; color:#888; margin-top:20px;">PNG, JPG, JPEG ou PDF (até 10MB)</p>
+                </div>
+
+                <div id="previewContainer" style="display:none; text-align:center;">
+                    <img id="imagePreview" class="preview-image" alt="Prévia da nota">
+                    <button onclick="extrairComIA()" class="btn-extrair">
+                        🚀 Extrair Dados com IA
+                    </button>
+                </div>
+            </div>
+
+            <!-- LADO DIREITO - FORMULÁRIO EDITÁVEL -->
+            <div class="panel right-panel">
+                <h3 class="card-title">📋 Dados Extraídos</h3>
+                <p id="processingMsg" class="status-processing" style="display:none;">Processando com inteligência artificial...</p>
+
+                <form id="extractForm" class="extracted-form">
+                    <label>Número da Nota / ID</label>
+                    <input type="text" id="notaId" value="NF-2026-0421" placeholder="Ex: NF-2026-0421">
+
+                    <label>Fornecedor / Empresa</label>
+                    <input type="text" id="fornecedor" value="Papelaria Central Ltda" placeholder="Nome do fornecedor">
+
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+                        <div>
+                            <label>Valor (R$)</label>
+                            <input type="text" id="valor" value="1.250,00" placeholder="0,00">
+                        </div>
+                        <div>
+                            <label>Data de Vencimento</label>
+                            <input type="date" id="vencimento" value="2026-04-15">
+                        </div>
+                    </div>
+
+                    <label>Categoria</label>
+                    <select id="categoria">
+                        <option value="MATERIA_PRIMA">Matéria-prima</option>
+                        <option value="LOGISTICA" selected>Logística / Transporte</option>
+                        <option value="INFRA">Infraestrutura</option>
+                        <option value="SERVICOS">Serviços Terceirizados</option>
+                        <option value="OUTROS">Outros</option>
+                    </select>
+
+                    <label>Observações</label>
+                    <textarea id="observacoes" rows="3">Nota de compra de envelopes e papel A4</textarea>
+
+                    <button type="button" onclick="salvarNotaExtraida()" class="btn-salvar">
+                        💾 Salvar Nota no Sistema
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Preview da imagem
+        function handleFile(input) {
+            const file = input.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('imagePreview').src = e.target.result;
+                document.getElementById('uploadArea').style.display = 'none';
+                document.getElementById('previewContainer').style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Simula extração com IA
+        function extrairComIA() {
+            const msg = document.getElementById('processingMsg');
+            msg.style.display = 'block';
+            msg.textContent = '🔍 Processando com inteligência artificial...';
+
+            // Simula delay da IA
+            setTimeout(() => {
+                msg.style.display = 'none';
+                
+                // Preenche o formulário com dados (você pode mudar os valores)
+                document.getElementById('notaId').value = 'NF-2026-0421';
+                document.getElementById('fornecedor').value = 'Papelaria Central Ltda';
+                document.getElementById('valor').value = '1.250,00';
+                document.getElementById('vencimento').value = '2026-04-15';
+                document.getElementById('categoria').value = 'LOGISTICA';
+                document.getElementById('observacoes').value = 'Compra de material de escritório - 500 envelopes + 10 resmas de papel A4';
+
+                alert('✅ Extração concluída! Revise os dados abaixo e clique em Salvar.');
+            }, 1800);
+        }
+
+        // Salva a nota (simulação)
+        function salvarNotaExtraida() {
+            alert('✅ Nota salva com sucesso no sistema!\n\nVocê pode encontrá-la em "Pesquisar Notas".');
+            // Aqui você pode adicionar redirecionamento ou salvar em localStorage se quiser
+            // window.location.href = 'pesquisa.html';
+        }
+
+        // Drag & Drop
+        const uploadArea = document.getElementById('uploadArea');
+        uploadArea.addEventListener('dragover', e => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+        uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('dragover'));
+        uploadArea.addEventListener('drop', e => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            const file = e.dataTransfer.files[0];
+            if (file) {
+                const input = document.getElementById('fileInput');
+                input.files = e.dataTransfer.files;
+                handleFile(input);
+            }
+        });
+    </script>
+</body>
+</html>
