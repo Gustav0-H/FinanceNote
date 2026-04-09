@@ -56,7 +56,7 @@ body {
 .sidebar-header {
     padding: 30px 20px;
     text-align: center;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .sidebar-header h2 {
@@ -85,7 +85,7 @@ body {
 }
 
 .nav-item:hover {
-    background: rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.05);
     color: white;
 }
 
@@ -140,8 +140,8 @@ body {
 .kpi-card {
     padding: 25px;
     border-radius: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.04);
-    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .kpi-label {
@@ -159,9 +159,20 @@ body {
 }
 
 /* Cores específicas dos KPIs */
-.kpi-total-pago { background-color: #d1e7dd; color: #0f5132; }
-.kpi-pendente   { background-color: #fff3cd; color: #664d03; }
-.kpi-previsao   { background-color: #cfe2f3; color: #084298; }
+.kpi-total-pago {
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+
+.kpi-pendente {
+    background-color: #fff3cd;
+    color: #664d03;
+}
+
+.kpi-previsao {
+    background-color: #cfe2f3;
+    color: #084298;
+}
 
 /* ====================== FORMULÁRIOS ====================== */
 .form-grid {
@@ -187,7 +198,9 @@ label {
     color: #444;
 }
 
-.form-input, .form-select, .form-textarea {
+.form-input,
+.form-select,
+.form-textarea {
     padding: 12px;
     border: 1px solid #ddd;
     border-radius: 12px;
@@ -196,7 +209,8 @@ label {
     transition: border-color 0.3s;
 }
 
-.form-input:focus, .form-select:focus {
+.form-input:focus,
+.form-select:focus {
     border-color: var(--accent-green);
 }
 
@@ -227,7 +241,7 @@ label {
     background: white;
     border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
 }
 
 table {
@@ -253,9 +267,20 @@ td {
 }
 
 /* Status */
-.status-paid    { color: var(--status-paid); font-weight: bold; }
-.status-pending { color: var(--status-pending); font-weight: bold; }
-.status-overdue { color: var(--status-overdue); font-weight: bold; }
+.status-paid {
+    color: var(--status-paid);
+    font-weight: bold;
+}
+
+.status-pending {
+    color: var(--status-pending);
+    font-weight: bold;
+}
+
+.status-overdue {
+    color: var(--status-overdue);
+    font-weight: bold;
+}
 
 /* ====================== BOTÕES DE AÇÃO ====================== */
 .action-container {
@@ -277,18 +302,42 @@ td {
     transition: all 0.2s;
 }
 
-.btn-pay    { background-color: #e8f8f0; color: var(--accent-green); border: 1px solid var(--accent-green); }
-.btn-edit   { background-color: #ebf5fb; color: var(--accent-blue); border: 1px solid var(--accent-blue); }
-.btn-delete { background-color: #fdedec; color: var(--accent-red); border: 1px solid var(--accent-red); }
+.btn-pay {
+    background-color: #e8f8f0;
+    color: var(--accent-green);
+    border: 1px solid var(--accent-green);
+}
 
-.btn-pay:hover, .btn-edit:hover, .btn-delete:hover {
+.btn-edit {
+    background-color: #ebf5fb;
+    color: var(--accent-blue);
+    border: 1px solid var(--accent-blue);
+}
+
+.btn-delete {
+    background-color: #fdedec;
+    color: var(--accent-red);
+    border: 1px solid var(--accent-red);
+}
+
+.btn-pay:hover,
+.btn-edit:hover,
+.btn-delete:hover {
     color: white;
     transform: translateY(-1px);
 }
 
-.btn-pay:hover    { background-color: var(--accent-green); }
-.btn-edit:hover   { background-color: var(--accent-blue); }
-.btn-delete:hover { background-color: var(--accent-red); }
+.btn-pay:hover {
+    background-color: var(--accent-green);
+}
+
+.btn-edit:hover {
+    background-color: var(--accent-blue);
+}
+
+.btn-delete:hover {
+    background-color: var(--accent-red);
+}
 
 /* ====================== ALERTAS ====================== */
 .alert-card {
@@ -357,6 +406,7 @@ td {
     .sidebar {
         width: 220px;
     }
+
     .main-content {
         margin-left: 220px;
     }
@@ -368,15 +418,16 @@ td {
         height: auto;
         position: relative;
     }
+
     .main-content {
         margin-left: 0;
         padding: 20px;
     }
-    
+
     .form-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .kpis-grid {
         grid-template-columns: 1fr;
     }

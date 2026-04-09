@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinanceNote - Login</title>
+    <link rel="stylesheet" href="assets/css/geral.css">
+    <link rel="stylesheet" href="assets/css/index.html">
+</head>
+
+<body>
+
+    <div class="modal-overlay">
+        <div class="modal-content">
+            <div class="logo-container">
+                <h1 class="logo">
+                    <img src="assets/imgs/img1.png" alt="FinanceNote Logo">
+                </h1>
+                <p class="tagline">Controle inteligente de gastos e notas fiscais</p>
+            </div>
+
+            <form id="loginForm" action="pg2.html" method="GET" class="login-form">
+                
+                <div class="input-group">
+                    <label for="login">E-mail</label>
+                    <div class="input-icon-wrapper">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                            <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
+                        </svg>
+                        <input type="email" id="login" name="email" placeholder="seu@email.com" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="senha">Senha</label>
+                    <div class="input-icon-wrapper">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                            <path d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM368 144v48h24c26.5 0 48 21.5 48 48v192c0 26.5-21.5 48-48 48H56c-26.5 0-48-21.5-48-48V240c0-26.5 21.5-48 48-48h24V144c0-70.7 57.3-128 128-128s128 57.3 128 128z"/>
+                        </svg>
+                        <input type="password" id="senha" name="senha" placeholder="••••••••" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Entrar no Sistema</button>
+            </form>
+
+            <div class="forgot-password">
+                <a href="#">Esqueceu a senha?</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

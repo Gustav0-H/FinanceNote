@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinanceNote - Vencimentos do Dia</title>
+    <link rel="stylesheet" href="assets/css/geral.css">
+    <link rel="stylesheet" href="assets/css/vencimentos.css">
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>Finance<span>Note</span></h2>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="pg2.html" class="nav-item">🏠 Menu Principal</a>
+            <a href="cadastro.html" class="nav-item">📄 Cadastrar Notas</a>
+            <a href="vencidas.html" class="nav-item">⚠️ Notas Vencidas</a>
+            <a href="vencimentos.html" class="nav-item active">📅 Vencimentos do Dia</a>
+            <a href="pesquisa.html" class="nav-item">🔍 Pesquisar Notas</a>
+            <a href="relatorios.html" class="nav-item">📊 Relatórios</a>
+            <a href="inteligente.html" class="nav-item">🤖 Extração Inteligente</a>
+            <a href="alertas-cnpj.html" class="nav-item">🚨 Alertas CNPJ</a>
+        </nav>
+        <a href="index.html" class="nav-item" style="margin-top: auto; border-top: 1px solid rgba(255,255,255,0.1);">🚪 Sair</a>
+    </aside>
+
+    <main class="main-content">
+        <div class="page-header">
+            <h1>📅 Vencimentos do Dia</h1>
+            <p style="color:#666;">Resumo completo dos vencimentos selecionados</p>
+        </div>
+
+        <!-- KPIS -->
+        <div class="kpi-row">
+            <div class="kpi-card kpi-pago">
+                <div class="kpi-label">✅ Já Pago Hoje</div>
+                <div id="valorPago" class="kpi-value">R$ 0,00</div>
+            </div>
+            <div class="kpi-card kpi-total">
+                <div class="kpi-label">📅 Total Vencendo Hoje</div>
+                <div id="totalVencendo" class="kpi-value">R$ 0,00</div>
+            </div>
+            <div class="kpi-card kpi-falta">
+                <div class="kpi-label">⚠️ Ainda Falta Pagar</div>
+                <div id="valorFalta" class="kpi-value">R$ 0,00</div>
+            </div>
+        </div>
+
+        <!-- SELETOR DE DATA -->
+        <div class="date-picker">
+            <div>
+                <label style="font-weight:600; display:block; margin-bottom:6px;">Ver vencimentos de:</label>
+                <input type="date" id="dataSelecionada" style="padding:14px; border-radius:12px; border:2px solid #ddd; font-size:1rem;">
+            </div>
+            <button onclick="carregarVencimentos()" 
+                    style="padding:14px 32px; background:#2ecc71; color:white; border:none; border-radius:12px; cursor:pointer; font-weight:bold;">
+                📅 Atualizar
+            </button>
+            <div style="margin-left:auto; font-size:0.95rem; color:#666;">
+                <strong>Hoje:</strong> <span id="dataAtual"></span>
+            </div>
+        </div>
+
+        <!-- TABELA - GASTOS QUE AINDA VÃO VENCER -->
+        <div class="table-card">
+            <h3 style="padding:20px 25px; margin:0; border-bottom:1px solid #eee;">
+                Gastos que ainda vão vencer nesta data
+            </h3>
+            <table style="width:100%; border-collapse:collapse;">
+                <thead>
+                    <tr style="background:#f8f9fa;">
+                        <th>NF / ID</th>
+                        <th>Fornecedor</th>
+                        <th>Valor</th>
+                        <th>Categoria</th>
+                        <th style="text-align:center;">Ação</th>
+                    </tr>
+                </thead>
+                <tbody id="tabelaVencimentos"></tbody>
+            </table>
+        </div>
+
+        <p id="mensagemVazia" style="text-align:center; padding:50px; color:#777; display:none;">
+            Nenhuma nota vence nesta data.
+        </p>
+    </main>
+
+    <script>
+        let todasNotas = [
+            { id: "NF-3005", fornecedor: "Limpeza & Cia", valor: 1200, vencimento: "2026-04-08", categoria: "Serviços", pago: true },
+            { id: "NF-3012", fornecedor: "Matéria-Prima Ltda", valor: 3450, vencimento: "2026-04-08", categoria: "Matéria-prima", pago: false },
+            { id: "NF-3018", fornecedor: "LogExpress", valor: 890, vencimento: "2026-04-08", categoria: "Logística", pago: false },
+            { id: "NF-3021", fornecedor: "Papelaria Central", valor: 450, vencimento: "2026-04-08", categoria: "Insumos", pago: true },
+            { id: "NF-3025", fornecedor: "Manutenção Predial", valor: 2100, vencimento: "2026-04-08", categoria: "Infraestrutura", pago: false },
+            { id: "NF-3030", fornecedor: "Tech Solutions", valor: 1750, vencimento: "2026-04-09", categoria: "Serviços", pago: false }
+        ];
+
+        function carregarVencimentos() {
+            const dataSelecionada = document.getElementById('dataSelecionada').value;
+            const tbody = document.getElementById('tabelaVencimentos');
+            tbody.innerHTML = '';
+
+            const notasDoDia = todasNotas.filter(n => n.vencimento === dataSelecionada);
+
+            let pagoHoje = 0;
+            let totalDoDia = 0;
+
+            notasDoDia.forEach(nota => {
+                totalDoDia += nota.valor;
+                if (nota.pago) pagoHoje += nota.valor;
+            });
+
+            const faltaPagar = totalDoDia - pagoHoje;
+
+            // Atualiza os KPIs
+            document.getElementById('valorPago').textContent = `R$ ${pagoHoje.toLocaleString('pt-BR')}`;
+            document.getElementById('totalVencendo').textContent = `R$ ${totalDoDia.toLocaleString('pt-BR')}`;
+            document.getElementById('valorFalta').textContent = `R$ ${faltaPagar.toLocaleString('pt-BR')}`;
+
+            // Tabela: apenas as que ainda não foram pagas
+            const pendentes = notasDoDia.filter(n => !n.pago);
+
+            if (pendentes.length === 0) {
+                document.getElementById('mensagemVazia').style.display = 'block';
+                return;
+            }
+
+            document.getElementById('mensagemVazia').style.display = 'none';
+
+            pendentes.forEach(nota => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>${nota.id}</strong></td>
+                    <td>${nota.fornecedor}</td>
+                    <td>R$ ${nota.valor.toLocaleString('pt-BR')}</td>
+                    <td>${nota.categoria}</td>
+                    <td style="text-align:center;">
+                        <button onclick="marcarComoPaga('${nota.id}', this)" class="btn-pago">
+                            ✅ Marcar como Pago
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function marcarComoPaga(id, botao) {
+            if (confirm(`Marcar a nota ${id} como PAGA?`)) {
+                const nota = todasNotas.find(n => n.id === id);
+                if (nota) nota.pago = true;
+
+                const row = botao.closest('tr');
+                row.style.transition = '0.4s';
+                row.style.opacity = '0.3';
+                row.style.textDecoration = 'line-through';
+
+                setTimeout(() => {
+                    carregarVencimentos();
+                    alert(`✅ Nota ${id} marcada como paga!`);
+                }, 450);
+            }
+        }
+
+        // Inicialização
+        window.onload = function() {
+            const hoje = "2026-04-08";
+            document.getElementById('dataSelecionada').value = hoje;
+            document.getElementById('dataAtual').textContent = hoje.split('-').reverse().join('/');
+
+            carregarVencimentos();
+        };
+    </script>
+</body>
+</html>

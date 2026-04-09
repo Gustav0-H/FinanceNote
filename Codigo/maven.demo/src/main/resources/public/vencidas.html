@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinanceNote - Notas Vencidas</title>
+    <link rel="stylesheet" href="assets/css/vencidas.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>Finance<span>Note</span></h2>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="menu.html" class="nav-item">🏠 Menu Principal</a>
+            <a href="cadastro.html" class="nav-item">📄 Cadastrar Notas</a>
+            <a href="vencidas.html" class="nav-item active">⚠️ Notas Vencidas</a>
+            <a href="pesquisa.html" class="nav-item">🔍 Pesquisar Notas</a>
+            <a href="relatorios.html" class="nav-item">📊 Relatórios</a>
+        </nav>
+        <a href="assets/css/geral.css" class="nav-item" style="margin-top: auto; border-top: 1px solid rgba(255,255,255,0.1);">🚪 Sair</a>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <span>Bem-vindo(a), <strong>Usuário</strong></span>
+            <span style="color: var(--accent-red); font-weight: bold; background: #fff5f5; padding: 5px 15px; border-radius: 20px;">
+                ⚠️ 3 Pendências Críticas
+            </span>
+        </header>
+
+        <section class="content-area">
+            <div class="page-title">
+                <h1>Despesas Vencidas</h1>
+                <p>Estas notas ultrapassaram o prazo e podem gerar multas ou interrupção de serviços.</p>
+            </div>
+
+            <div class="alert-card">
+                <div class="alert-info">
+                    <h3>Fornecedor de Matéria-Prima (NF-882)</h3>
+                    <p>Vencimento original: 05/03/2026 — <strong>Atrasado há 7 dias</strong></p>
+                </div>
+                <div class="alert-value">R$ 4.500,00</div>
+                <div class="action-group">
+                    <button class="btn-action btn-pay">✅ Pagar Agora</button>
+                    <button class="btn-action btn-edit">✏️</button>
+                    <button class="btn-action btn-delete">🗑️</button>
+                </div>
+            </div>
+
+            <div class="alert-card">
+                <div class="alert-info">
+                    <h3>Manutenção de Maquinário (ID-122)</h3>
+                    <p>Vencimento original: 10/03/2026 — <strong>Atrasado há 2 dias</strong></p>
+                </div>
+                <div class="alert-value">R$ 890,00</div>
+                <div class="action-group">
+                    <button class="btn-action btn-pay">✅ Pagar Agora</button>
+                    <button class="btn-action btn-edit">✏️</button>
+                    <button class="btn-action btn-delete">🗑️</button>
+                </div>
+            </div>
+
+            <div class="alert-card">
+                <div class="alert-info">
+                    <h3>Transportadora LogExpress</h3>
+                    <p>Vencimento original: 11/03/2026 — <strong>Atrasado há 1 dia</strong></p>
+                </div>
+                <div class="alert-value">R$ 2.150,40</div>
+                <div class="action-group">
+                    <button class="btn-action btn-pay">✅ Pagar Agora</button>
+                    <button class="btn-action btn-edit">✏️</button>
+                    <button class="btn-action btn-delete">🗑️</button>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinanceNote - Relatórios</title>
+    <link rel="stylesheet" href="assets/css/relatorios.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>Finance<span>Note</span></h2>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="menu.html" class="nav-item">🏠 Menu Principal</a>
+            <a href="cadastro.html" class="nav-item">📄 Cadastrar Notas</a>
+            <a href="vencidas.html" class="nav-item">⚠️ Notas Vencidas</a>
+            <a href="pesquisa.html" class="nav-item">🔍 Pesquisar Notas</a>
+            <a href="relatorios.html" class="nav-item active">📊 Relatórios</a>
+        </nav>
+        <a href="assets/css/geral.css" class="nav-item" style="margin-top: auto; border-top: 1px solid rgba(255,255,255,0.1);">🚪 Sair</a>
+    </aside>
+
+    <main class="main-content">
+        <header class="page-header">
+            <h1>Relatórios Financeiros</h1>
+            <p style="color: #666;">Análise de fluxo de saída - Março 2026</p>
+        </header>
+
+        <div class="kpis-grid">
+            <div class="kpi-card kpi-total-pago">
+                <span class="kpi-label">✅ Gastos Pagos</span>
+                <span class="kpi-value">R$ 12.450,00</span>
+            </div>
+            <div class="kpi-card kpi-pendente">
+                <span class="kpi-label">⏳ Em Aberto</span>
+                <span class="kpi-value">R$ 4.120,00</span>
+            </div>
+            <div class="kpi-card kpi-previsao">
+                <span class="kpi-label">📈 Total Previsto</span>
+                <span class="kpi-value">R$ 16.570,00</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 class="card-title">Fluxo Diário de Despesas (R$)</h3>
+            <div class="bar-chart-container">
+                <div class="bar-wrapper">
+                    <div class="bar" style="height: 30%;" data-value="R$ 300"></div>
+                    <span class="bar-label">01/03</span>
+                </div>
+                <div class="bar-wrapper">
+                    <div class="bar" style="height: 55%;" data-value="R$ 550"></div>
+                    <span class="bar-label">05/03</span>
+                </div>
+                <div class="bar-wrapper">
+                    <div class="bar" style="height: 90%;" data-value="R$ 1.200"></div>
+                    <span class="bar-label">10/03</span>
+                </div>
+                <div class="bar-wrapper">
+                    <div class="bar" style="height: 45%;" data-value="R$ 450"></div>
+                    <span class="bar-label">15/03</span>
+                </div>
+                <div class="bar-wrapper">
+                    <div class="bar" style="height: 70%;" data-value="R$ 800"></div>
+                    <span class="bar-label">20/03</span>
+                </div>
+                <div class="bar-wrapper">
+                    <div class="bar" style="height: 20%;" data-value="R$ 200"></div>
+                    <span class="bar-label">25/03</span>
+                </div>
+                <div class="bar-wrapper">
+                    <div class="bar" style="height: 10%;" data-value="R$ 100"></div>
+                    <span class="bar-label">30/03</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="charts-row">
+            <div class="card">
+                <h3 class="card-title">Despesas por Categoria</h3>
+                <div class="stat-line"><span>Insumos</span><strong>R$ 7.200,00</strong></div>
+                <div class="stat-line"><span>Logística</span><strong>R$ 1.850,00</strong></div>
+                <div class="stat-line"><span>Operacional</span><strong>R$ 3.400,00</strong></div>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">Alertas do Mês</h3>
+                <div style="background: #fff3cd; padding: 15px; border-radius: 12px; color: #664d03;">
+                    ⚠️ <strong>Nota Fiscal Pendente:</strong> Manutenção predial vence em 2 dias.
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
