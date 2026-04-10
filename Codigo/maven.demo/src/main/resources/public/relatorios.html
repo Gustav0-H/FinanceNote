@@ -20,8 +20,7 @@
             <a href="pesquisa.html" class="nav-item">🔍 Pesquisar Notas</a>
             <a href="vencidas.html" class="nav-item">⚠️ Notas Vencidas</a>
             <a href="vencimentos.html" class="nav-item">📅 Vencimentos do Dia</a>
-            <a href="alertas-cnpj.html" class="nav-item">🚨 Alertas CNPJ</a>
-            <a href="relatorios.html" class="nav-item">📊 Relatórios</a>
+            <a href="relatorios.html" class="nav-item active">📊 Relatórios</a>
         </nav>
         <a href="index.html" class="nav-item" style="margin-top: auto; border-top: 1px solid rgba(255,255,255,0.1);">🚪 Sair</a>
     </aside>
@@ -32,6 +31,7 @@
             <p style="color: #666;">Análise de fluxo de saída - Março 2026</p>
         </header>
 
+        <!-- KPIS -->
         <div class="kpis-grid">
             <div class="kpi-card kpi-total-pago">
                 <span class="kpi-label">✅ Gastos Pagos</span>
@@ -47,6 +47,7 @@
             </div>
         </div>
 
+        <!-- Fluxo Diário -->
         <div class="card">
             <h3 class="card-title">Fluxo Diário de Despesas (R$)</h3>
             <div class="bar-chart-container">
@@ -81,20 +82,37 @@
             </div>
         </div>
 
+        <!-- NOVAS SEÇÕES (lado a lado) -->
         <div class="charts-row">
-            <div class="card">
-                <h3 class="card-title">Despesas por Categoria</h3>
-                <div class="stat-line"><span>Insumos</span><strong>R$ 7.200,00</strong></div>
-                <div class="stat-line"><span>Logística</span><strong>R$ 1.850,00</strong></div>
-                <div class="stat-line"><span>Operacional</span><strong>R$ 3.400,00</strong></div>
-            </div>
             
+            <!-- Previsão de Gastos do Mês Seguinte -->
             <div class="card">
-                <h3 class="card-title">Alertas do Mês</h3>
-                <div style="background: #fff3cd; padding: 15px; border-radius: 12px; color: #664d03;">
-                    ⚠️ <strong>Nota Fiscal Pendente:</strong> Manutenção predial vence em 2 dias.
-                </div>
+                <h3 class="card-title">📅 Previsão de Gastos - Abril 2026</h3>
+                <div class="stat-line"><span>Total Estimado</span><strong>R$ 18.900,00</strong></div>
+                <div class="stat-line"><span>Vencimentos previstos</span><strong>8 notas</strong></div>
+                <div class="stat-line"><span>Média diária</span><strong>R$ 630,00</strong></div>
+                <p style="margin-top: 15px; font-size: 0.95rem; color: #27ae60;">
+                    ↑ 14% em relação a março
+                </p>
             </div>
+
+            <!-- Alertas do Mês - Agora mostra NOTAS VENCIDAS -->
+            <div class="card">
+                <h3 class="card-title">🚨 Alertas do Mês</h3>
+                <div style="background: #fff3cd; padding: 20px; border-radius: 12px; color: #664d03; text-align: center;">
+                    <h2 style="margin: 0 0 8px 0; font-size: 2.8rem; color: #e74c3c;">3</h2>
+                    <p style="margin: 0; font-weight: bold; font-size: 1.1rem;">
+                        Notas Vencidas
+                    </p>
+                    <p style="margin: 8px 0 0 0; color: #c0392b;">
+                        Total em atraso: <strong>R$ 7.540,00</strong>
+                    </p>
+                </div>
+                <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: #666;">
+                    Clique em “Notas Vencidas” no menu para ver detalhes
+                </p>
+            </div>
+
         </div>
     </main>
 

@@ -17,11 +17,10 @@
         <nav class="sidebar-nav">
             <a href="menu.html" class="nav-item">🏠 Menu Principal</a>
             <a href="inteligente.html" class="nav-item">🤖 Extração Inteligente</a>
-            <a href="cadastro.html" class="nav-item">📄 Cadastrar Notas</a>
+            <a href="cadastro.html" class="nav-item active">📄 Cadastrar Notas</a>
             <a href="pesquisa.html" class="nav-item">🔍 Pesquisar Notas</a>
             <a href="vencidas.html" class="nav-item">⚠️ Notas Vencidas</a>
             <a href="vencimentos.html" class="nav-item">📅 Vencimentos do Dia</a>
-            <a href="alertas-cnpj.html" class="nav-item">🚨 Alertas CNPJ</a>
             <a href="relatorios.html" class="nav-item">📊 Relatórios</a>
         </nav>
         <a href="index.html" class="nav-item" style="margin-top: auto; border-top: 1px solid rgba(255,255,255,0.1);">🚪 Sair</a>
@@ -49,6 +48,16 @@
                     </div>
 
                     <div class="form-group">
+                        <label>CNPJ/CPF do Fornecedor</label>
+                        <input type="text" class="form-input" placeholder="Ex: 12.345.678/0001-90 ou 123.456.789-00" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>CNPJ/CPF do Tomador</label>
+                        <input type="text" class="form-input" placeholder="Ex: 12.345.678/0001-90 ou 123.456.789-00" required>
+                    </div>
+
+                    <div class="form-group">
                         <label>Valor (R$)</label>
                         <input type="number" step="0.01" class="form-input" placeholder="0,00" required>
                     </div>
@@ -59,22 +68,17 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Categoria de Gasto</label>
-                        <select class="form-select">
-                            <option value="MATERIA_PRIMA">Matéria-prima</option>
-                            <option value="LOGISTICA">Logística / Transporte</option>
-                            <option value="INFRA">Infraestrutura</option>
-                            <option value="SERVICOS">Serviços Terceirizados</option>
-                            <option value="OUTROS">Outros</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
                         <label>Status do Pagamento</label>
-                        <select class="form-select">
+                        <select id="statusSelect" class="form-select">
                             <option value="PENDENTE">Pendente</option>
                             <option value="PAGO">Pago</option>
                         </select>
+                    </div>
+
+                    <!-- CAMPO QUE APARECE SOMENTE QUANDO ESTÁ PAGO -->
+                    <div class="form-group" id="dataPagamentoGroup" style="display: none;">
+                        <label>Data de Pagamento</label>
+                        <input type="date" id="dataPagamento" class="form-input">
                     </div>
 
                     <div class="form-group full-width">
@@ -93,24 +97,24 @@
     </main>
 
     <script>
-        // Exemplo de como os dados seriam tratados sem modificadores private
-        class NotaDespesa {
-            id;
-            fornecedor;
-            valor;
-            vencimento;
-            status;
+        // Controle dinâmico do campo Data de Pagamento
+        const statusSelect = document.getElementById('statusSelect');
+        const dataGroup = document.getElementById('dataPagamentoGroup');
+        const dataInput = document.getElementById('dataPagamento');
 
-            constructor(id, fornecedor, valor, vencimento, status) {
-                this.id = id;
-                this.fornecedor = fornecedor;
-                this.valor = valor;
-                this.vencimento = vencimento;
-                this.status = status;
+        statusSelect.addEventListener('change', function () {
+            if (this.value === 'PAGO') {
+                dataGroup.style.display = 'block';
+                dataInput.required = true;
+            } else {
+                dataGroup.style.display = 'none';
+                dataInput.required = false;
+                dataInput.value = ''; // limpa o campo
             }
-        }
+        });
 
-        document.getElementById('notaForm').addEventListener('submit', function(e) {
+        // Formulário
+        document.getElementById('notaForm').addEventListener('submit', function (e) {
             e.preventDefault();
             alert('Nota cadastrada com sucesso!');
         });

@@ -16,12 +16,11 @@
         </div>
         <nav class="sidebar-nav">
             <a href="menu.html" class="nav-item">🏠 Menu Principal</a>
-            <a href="inteligente.html" class="nav-item">🤖 Extração Inteligente</a>
+            <a href="inteligente.html" class="nav-item active">🤖 Extração Inteligente</a>
             <a href="cadastro.html" class="nav-item">📄 Cadastrar Notas</a>
             <a href="pesquisa.html" class="nav-item">🔍 Pesquisar Notas</a>
             <a href="vencidas.html" class="nav-item">⚠️ Notas Vencidas</a>
             <a href="vencimentos.html" class="nav-item">📅 Vencimentos do Dia</a>
-            <a href="alertas-cnpj.html" class="nav-item">🚨 Alertas CNPJ</a>
             <a href="relatorios.html" class="nav-item">📊 Relatórios</a>
         </nav>
         <a href="index.html" class="nav-item" style="margin-top: auto; border-top: 1px solid rgba(255,255,255,0.1);">🚪 Sair</a>
@@ -70,6 +69,14 @@
                     <label>Fornecedor / Empresa</label>
                     <input type="text" id="fornecedor" value="Papelaria Central Ltda" placeholder="Nome do fornecedor">
 
+                    <!-- NOVO CAMPO: CNPJ/CPF do Fornecedor -->
+                    <label>CNPJ/CPF do Fornecedor</label>
+                    <input type="text" id="cnpjFornecedor" value="12.345.678/0001-90" placeholder="Ex: 12.345.678/0001-90 ou 123.456.789-00">
+
+                    <!-- CNPJ/CPF do Tomador (mantido) -->
+                    <label>CNPJ/CPF do Tomador</label>
+                    <input type="text" id="cnpjTomador" value="12.345.678/0001-90" placeholder="Ex: 12.345.678/0001-90 ou 123.456.789-00">
+
                     <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
                         <div>
                             <label>Valor (R$)</label>
@@ -80,15 +87,6 @@
                             <input type="date" id="vencimento" value="2026-04-15">
                         </div>
                     </div>
-
-                    <label>Categoria</label>
-                    <select id="categoria">
-                        <option value="MATERIA_PRIMA">Matéria-prima</option>
-                        <option value="LOGISTICA" selected>Logística / Transporte</option>
-                        <option value="INFRA">Infraestrutura</option>
-                        <option value="SERVICOS">Serviços Terceirizados</option>
-                        <option value="OUTROS">Outros</option>
-                    </select>
 
                     <label>Observações</label>
                     <textarea id="observacoes" rows="3">Nota de compra de envelopes e papel A4</textarea>
@@ -122,16 +120,16 @@
             msg.style.display = 'block';
             msg.textContent = '🔍 Processando com inteligência artificial...';
 
-            // Simula delay da IA
             setTimeout(() => {
                 msg.style.display = 'none';
                 
-                // Preenche o formulário com dados (você pode mudar os valores)
+                // Preenche os campos (incluindo o novo CNPJ do Fornecedor)
                 document.getElementById('notaId').value = 'NF-2026-0421';
                 document.getElementById('fornecedor').value = 'Papelaria Central Ltda';
+                document.getElementById('cnpjFornecedor').value = '12.345.678/0001-90';
+                document.getElementById('cnpjTomador').value = '12.345.678/0001-90';
                 document.getElementById('valor').value = '1.250,00';
                 document.getElementById('vencimento').value = '2026-04-15';
-                document.getElementById('categoria').value = 'LOGISTICA';
                 document.getElementById('observacoes').value = 'Compra de material de escritório - 500 envelopes + 10 resmas de papel A4';
 
                 alert('✅ Extração concluída! Revise os dados abaixo e clique em Salvar.');
@@ -141,8 +139,6 @@
         // Salva a nota (simulação)
         function salvarNotaExtraida() {
             alert('✅ Nota salva com sucesso no sistema!\n\nVocê pode encontrá-la em "Pesquisar Notas".');
-            // Aqui você pode adicionar redirecionamento ou salvar em localStorage se quiser
-            // window.location.href = 'pesquisa.html';
         }
 
         // Drag & Drop
