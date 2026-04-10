@@ -69,9 +69,9 @@ body {
 }
 
 .nav-item.active {
-    background-color: var(--sidebar-active);
+    background-color: #9b59b6;
     color: white;
-    border-left: 4px solid var(--accent-green);
+    border-left: 4px solid #32143d;
 }
 
 /* --- CONTEÚDO PRINCIPAL --- */

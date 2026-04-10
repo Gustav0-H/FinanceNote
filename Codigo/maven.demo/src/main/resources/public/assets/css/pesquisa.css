@@ -52,10 +52,11 @@
        color: white;
    }
 
-   .nav-item.active {
-       background-color: var(--accent-green);
-       color: white;
-   }
+    .nav-item.active {
+        background-color: #3498db;
+        color: white;
+        border-left: 4px solid #3498db;
+    }
 
    /* --- CONTEÚDO --- */
    .main-content {

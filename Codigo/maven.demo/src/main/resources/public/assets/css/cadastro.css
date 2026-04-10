@@ -53,8 +53,9 @@ body {
 }
 
 .nav-item.active {
-    background-color: var(--accent-green);
+    background-color: #2ecc71;
     color: white;
+    border-left: 4px solid #088d08;
 }
 
 /* --- CONTEÚDO PRINCIPAL --- */
