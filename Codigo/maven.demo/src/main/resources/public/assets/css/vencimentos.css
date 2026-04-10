@@ -59,3 +59,24 @@
     align-items: center;
     gap: 20px;
 }
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    text-decoration: none;
+    color: var(--text-muted);
+    transition: 0.3s;
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+}
+
+.nav-item.active {
+    background-color: #f1c40f;
+    color: #2c3e50;
+    border-left: 4px solid #f1c40f;
+    font-weight: 600;
+}
