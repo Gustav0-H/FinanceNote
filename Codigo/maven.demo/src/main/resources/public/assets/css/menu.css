@@ -127,7 +127,7 @@
 }
 
 .btn-vencimentos {
-    border-top: 6px solid #f39c12;     /* Laranja */
+    border-top: 6px solid #f1c40f;     /* Amarelo forte (alerta) */
 }
 
 .btn-alertas {
@@ -135,7 +135,7 @@
 }
 
 .btn-relatorios {
-    border-top: 6px solid #1abc9c;     /* Verde-água */
+    border-top: 6px solid #ad1573;     /* Verde-água */
 }
 
 @media (max-width: 768px) {
