@@ -1,0 +1,212 @@
+.header-section {
+    background: linear-gradient(135deg, #1a2a3a 0%, #2c3e50 100%);
+    width: 100%;
+    padding: 50px 20px 60px;
+    color: white;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.header-content {
+    max-width: 700px;
+    text-align: center;
+}
+
+.header-content h1 {
+    font-size: 3.2rem;
+    margin: 0 0 10px 0;
+    font-weight: 800;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+}
+
+.header-content h1 span {
+    color: var(--accent-green);
+}
+
+.header-content p {
+    font-size: 1.1rem;
+    color: #bdc3c7;
+    margin: 0;
+    letter-spacing: 1.2px;
+    font-weight: 500;
+}
+
+.header-subtext {
+    font-size: 0.95rem;
+    color: #95a5a6;
+    margin-top: 15px;
+    line-height: 1.5;
+    max-width: 600px;
+}
+
+.header-actions {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    display: flex;
+    gap: 18px;
+}
+
+.login-link,
+.logout-link {
+    color: #bdc3c7;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.login-link:hover {
+    color: #2ecc71;
+    transform: scale(1.08);
+}
+
+.logout-link:hover {
+    color: #e74c3c;
+    transform: scale(1.08);
+}
+
+.login-link svg,
+.logout-link svg {
+    width: 34px;
+    height: 34px;
+    fill: currentColor;
+    margin-bottom: 4px;
+}
+
+.login-label,
+.logout-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.menu-container {
+    padding: 60px 20px 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    width: 100%;
+}
+
+.feature-btn {
+    background: white;
+    padding: 45px 30px;
+    border-radius: 24px;
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 600;
+    font-size: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    height: 100%;
+    border: none;
+    min-height: 220px;
+    gap: 8px;
+}
+
+.feature-btn:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.12);
+}
+
+.feature-icon {
+    font-size: 4.2rem;
+    margin-bottom: 15px;
+    transition: transform 0.4s ease;
+}
+
+.feature-btn:hover .feature-icon {
+    transform: scale(1.12);
+}
+
+.feature-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 4px;
+}
+
+.feature-desc {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: center;
+    max-width: 220px;
+}
+
+.btn-inteligente {
+    border-top: 6px solid #9b59b6;     /* Roxo - IA */
+}
+
+.btn-cadastro {
+    border-top: 6px solid #2ecc71;     /* Verde */
+}
+
+.btn-pesquisa {
+    border-top: 6px solid #3498db;     /* Azul */
+}
+
+.btn-vencidas {
+    border-top: 6px solid #e74c3c;     /* Vermelho */
+}
+
+.btn-vencimentos {
+    border-top: 6px solid #f1c40f;     /* Amarelo forte (alerta) */
+}
+
+.btn-alertas {
+    border-top: 6px solid #f1c40f;     /* Amarelo forte (alerta) */
+}
+
+.btn-relatorios {
+    border-top: 6px solid #ad1573;     /* Verde-água */
+}
+
+@media (max-width: 768px) {
+    .header-section {
+        padding: 40px 15px 50px;
+    }
+
+    .header-actions {
+        top: 15px;
+        right: 15px;
+        gap: 10px;
+    }
+
+    .login-label,
+    .logout-label {
+        font-size: 0.65rem;
+    }
+
+    .header-content h1 {
+        font-size: 2.4rem;
+    }
+
+    .feature-desc {
+        font-size: 0.85rem;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
