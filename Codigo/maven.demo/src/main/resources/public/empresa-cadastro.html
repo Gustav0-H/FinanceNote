@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinanceNote - Cadastro de Empresa</title>
+    <link rel="stylesheet" href="assets/css/geral.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+</head>
+
+<body>
+    <div class="modal-overlay">
+        <div class="modal-content">
+            <div class="logo-container">
+                <h1 class="logo">
+                    <img src="assets/imgs/img1.png" alt="FinanceNote Logo">
+                </h1>
+                <p class="tagline">Crie sua empresa e defina a senha de cadastro de usuários.</p>
+            </div>
+
+            <div class="form-intro">
+                <h2>Cadastro de Empresa</h2>
+                <p>Cadastre a empresa ou pessoa responsável para usar o FinanceNote. Use o mesmo CNPJ ou CPF como nome da empresa se desejar.</p>
+            </div>
+
+            <form id="companyForm" action="index.html" method="GET" class="login-form">
+                <div class="input-group">
+                    <label for="companyEmail">E-mail de contato</label>
+                    <div class="input-icon-wrapper">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path d="M502.3 190.8L327.4 338.6c-18.7 16.7-47.3 16.7-66 0L9.7 190.8C3.9 186.2 0 178.9 0 171V80c0-26.5 21.5-48 48-48h416c26.5 0 48 21.5 48 48v91c0 7.9-3.9 15.2-9.7 19.8z"/>
+                        </svg>
+                        <input type="email" id="companyEmail" name="companyEmail" placeholder="contato@empresa.com" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="ownerName">Nome do dono / responsável</label>
+                    <div class="input-icon-wrapper">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                            <path d="M313.6 304c-28.7 24.3-65.2 40-104.6 40s-75.9-15.7-104.6-40C69.2 324.7 32 376.1 32 438.4 32 458.7 49.3 476 69.6 476H378.4c20.3 0 37.6-17.3 37.6-37.6 0-62.3-37.2-113.7-102.4-134.4zM224 256a128 128 0 1 0 0-256 128 128 0 1 0 0 256z"/>
+                        </svg>
+                        <input type="text" id="ownerName" name="ownerName" placeholder="Nome do responsável" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="companyName">Nome da empresa / CNPJ / CPF</label>
+                    <div class="input-icon-wrapper">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                            <path d="M320 96A176 176 0 1 0 320 448 176 176 0 1 0 320 96zm208 0H464a96 96 0 0 0-192 0H112A112 112 0 0 0 0 208v64a32 32 0 0 0 32 32h576a32 32 0 0 0 32-32v-64a112 112 0 0 0-112-112z"/>
+                        </svg>
+                        <input type="text" id="companyName" name="companyName" placeholder="Nome da empresa ou CNPJ/CPF" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="companyPassword">Senha de cadastro de usuários</label>
+                    <div class="input-icon-wrapper">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                            <path d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM368 144v48h24c26.5 0 48 21.5 48 48v192c0 26.5-21.5 48-48 48H56c-26.5 0-48-21.5-48-48V240c0-26.5 21.5-48 48-48h24V144c0-70.7 57.3-128 128-128s128 57.3 128 128z"/>
+                        </svg>
+                        <input type="password" id="companyPassword" name="companyPassword" placeholder="Senha para cadastrar usuários" required>
+                    </div>
+                </div>
+
+                <p class="note-text">Esta senha será usada ao cadastrar novos usuários dentro do sistema FinanceNote.</p>
+
+                <button type="submit" class="btn btn-primary">Cadastrar Empresa</button>
+            </form>
+
+            <div class="footer-links">
+                <a href="index.html">Voltar para Login</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('companyForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Empresa cadastrada com sucesso! Agora faça login com seus dados.');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>

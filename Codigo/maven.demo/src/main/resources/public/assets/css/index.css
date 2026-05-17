@@ -39,6 +39,53 @@
     font-weight: 500;
 }
 
+.form-intro {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.form-intro h2 {
+    margin-bottom: 10px;
+    font-size: 1.45rem;
+    color: #222;
+}
+
+.form-intro p {
+    margin: 0;
+    color: #666;
+    line-height: 1.5;
+}
+
+.note-text {
+    color: #666;
+    font-size: 0.95rem;
+    text-align: left;
+    margin: -10px 0 10px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+    font-size: 0.95rem;
+}
+
+.footer-links a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-links span {
+    color: #bbb;
+}
+
 .login-form {
     display: flex;
     flex-direction: column;
