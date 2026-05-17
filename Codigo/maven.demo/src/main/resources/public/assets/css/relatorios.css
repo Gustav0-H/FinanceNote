@@ -64,9 +64,9 @@ body {
 }
 
 .nav-item.active {
-    background-color: #ad1573;
+    background-color: #9b59b6;
     color: white;
-    border-left: 4px solid #ad1573;
+    border-left: 4px solid #32143d;
 }
 
 /* --- CONTEÚDO --- */

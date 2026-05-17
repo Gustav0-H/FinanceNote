@@ -28,9 +28,9 @@
 }
 
 .nav-item.active {
-    background-color: #04101f;
-    color: #2c3e50;
-    border-left: 4px solid #1100ff;
+    background-color: #9b59b6;
+    color: white;
+    border-left: 4px solid #32143d;
     font-weight: 700;
 }
 
