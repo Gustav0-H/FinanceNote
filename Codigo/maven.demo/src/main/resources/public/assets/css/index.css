@@ -1,74 +1,80 @@
 /* Estilos específicos da página de login */
 .modal-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100vh;
-    background: linear-gradient(135deg, #1a2a3a 0%, #2c3e50 100%);
+    background: radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 45%),
+                linear-gradient(135deg, #1a2a3a 0%, #2c3e50 100%);
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 24px;
     z-index: 1000;
 }
 
 .modal-content {
-    background: white;
-    padding: 50px 40px;
-    border-radius: 24px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    background: #ffffff;
+    border: 1px solid rgba(34, 34, 34, 0.05);
+    padding: 46px 36px;
+    border-radius: 28px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.14);
     width: 100%;
-    max-width: 420px;
-    text-align: center;
+    max-width: 480px;
+    text-align: left;
 }
 
 .logo-container {
-    margin-bottom: 35px;
+    margin-bottom: 32px;
+    text-align: center;
 }
 
 .logo img {
-    width: 180px;
+    width: 160px;
     height: auto;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+    filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.12));
 }
 
 .tagline {
-    color: #666;
+    color: #6f7a8a;
     font-size: 1rem;
-    margin-top: 8px;
+    margin-top: 10px;
     font-weight: 500;
+    line-height: 1.65;
 }
 
 .form-intro {
-    margin-bottom: 25px;
-    text-align: left;
+    margin-bottom: 28px;
 }
 
 .form-intro h2 {
     margin-bottom: 10px;
-    font-size: 1.45rem;
-    color: #222;
+    font-size: 1.65rem;
+    color: #18222f;
+    line-height: 1.2;
 }
 
 .form-intro p {
     margin: 0;
-    color: #666;
-    line-height: 1.5;
+    color: #5f6c7f;
+    font-size: 1rem;
+    line-height: 1.75;
 }
 
 .note-text {
-    color: #666;
+    color: #5f6c7f;
     font-size: 0.95rem;
-    text-align: left;
-    margin: -10px 0 10px;
+    margin: -10px 0 14px;
 }
 
 .footer-links {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     gap: 12px;
-    margin-top: 20px;
+    margin-top: 22px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(34, 34, 34, 0.08);
     font-size: 0.95rem;
 }
 
@@ -83,13 +89,13 @@
 }
 
 .footer-links span {
-    color: #bbb;
+    color: #b0bac6;
 }
 
 .login-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 22px;
 }
 
 .input-group {
@@ -98,9 +104,9 @@
 
 .input-group label {
     display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #444;
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: #2e3a4a;
     font-size: 0.95rem;
 }
 
@@ -110,27 +116,34 @@
 
 .input-icon-wrapper .icon {
     position: absolute;
-    left: 16px;
+    left: 14px;
     top: 50%;
     transform: translateY(-50%);
     width: 20px;
     height: 20px;
-    fill: #888;
+    fill: #7d8b9a;
     z-index: 10;
 }
 
 .input-icon-wrapper input {
     width: 100%;
-    padding: 14px 14px 14px 52px;
-    border: 2px solid #e0e0e0;
-    border-radius: 12px;
+    padding: 16px 16px 16px 52px;
+    border: 1.5px solid #d8dee7;
+    border-radius: 16px;
     font-size: 1rem;
-    transition: all 0.3s ease;
+    color: #2e3a4a;
+    background-color: #fbfdff;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    min-height: 54px;
+}
+
+.input-icon-wrapper input::placeholder {
+    color: #9ea8b7;
 }
 
 .input-icon-wrapper input:focus {
     border-color: var(--accent-green);
-    box-shadow: 0 0 0 4px rgba(46, 204, 113, 0.15);
+    box-shadow: 0 0 0 6px rgba(46, 204, 113, 0.1);
     outline: none;
 }
 
@@ -139,30 +152,35 @@
     color: white;
     border: none;
     padding: 16px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border-radius: 12px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    border-radius: 14px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 10px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .btn-primary:hover {
     background-color: #27ae60;
-    transform: translateY(-2px);
+    transform: translateY(-1px);
 }
 
-.forgot-password {
+.forgot-password,
+.footer-links {
     text-align: center;
-    margin-top: 15px;
 }
 
-.forgot-password a {
-    color: var(--accent-blue);
-    text-decoration: none;
-    font-size: 0.9rem;
-}
+@media (max-width: 520px) {
+    .modal-content {
+        padding: 30px 20px;
+    }
 
-.forgot-password a:hover {
-    text-decoration: underline;
+    .footer-links {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
+
+    .footer-links span {
+        display: none;
+    }
 }
