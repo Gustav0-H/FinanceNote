@@ -154,6 +154,68 @@ label {
     transform: translateY(-2px);
 }
 
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.registration-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.registration-card {
+    width: 100%;
+    max-width: 640px;
+    padding: 32px;
+}
+
+.page-header h1 {
+    margin-bottom: 10px;
+    font-size: 2rem;
+}
+
+.note-text {
+    margin-top: 15px;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.btn-cancel {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 24px;
+    border-radius: 12px;
+    background: #95a5a6;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    transition: filter 0.2s, transform 0.2s;
+}
+
+.btn-cancel:hover {
+    filter: brightness(1.05);
+    transform: translateY(-1px);
+}
+
+@media (max-width: 780px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .registration-card {
+        padding: 24px;
+    }
+}
+
 /* --- STATUS BADGES --- */
 .badge {
     padding: 5px 12px;
