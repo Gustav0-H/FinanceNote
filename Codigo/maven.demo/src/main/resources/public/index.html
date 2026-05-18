@@ -3,71 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>FinanceNote - Login</title>
-    <link rel="stylesheet" href="assets/css/geral.css">
+
     <link rel="stylesheet" href="assets/css/index.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Overlay de login -->
-    <div class="modal-overlay">
-        <div class="modal-content">
-            <!-- Cabeçalho da logo -->
-            <header class="logo-container">
-                <h1 class="logo">
-                    <img src="assets/imgs/img1.png" alt="FinanceNote Logo">
-                </h1>
-                <p class="tagline">Controle inteligente de gastos e notas fiscais</p>
-            </header>
 
-            <!-- Introdução do formulário -->
-            <section class="form-intro">
-                <h2>Bem-vindo ao FinanceNote</h2>
-                <p>Informe o e-mail, a senha e a empresa ou CNPJ/CPF para acessar o sistema.</p>
-            </section>
+<div class="screen">
 
-            <!-- Formulário de login -->
-            <form id="loginForm" action="menu.html" method="GET" class="login-form">
-                <div class="input-group">
-                    <label for="company">Empresa / CNPJ ou CPF</label>
-                    <div class="input-icon-wrapper">
-                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
-                            <path d="M320 96A176 176 0 1 0 320 448 176 176 0 1 0 320 96zm208 0H464a96 96 0 0 0-192 0H112A112 112 0 0 0 0 208v64a32 32 0 0 0 32 32h576a32 32 0 0 0 32-32v-64a112 112 0 0 0-112-112z"/>
-                        </svg>
-                        <input type="text" id="company" name="company" placeholder="Nome da empresa ou CNPJ/CPF" required>
+    <!-- ESQUERDA -->
+    <section class="left-side">
+
+        <div class="brand-content">
+
+            <img src="assets/imgs/img1.png" alt="Logo">
+
+            <h1>
+                Finance<span>Note</span>
+            </h1>
+
+            <div class="green-line"></div>
+
+            <p>
+                Controle inteligente de gastos,
+                notas fiscais e gestão financeira
+                em um único lugar.
+            </p>
+
+            <div class="feature-list">
+
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+
+                    <div>
+                        <h3>Controle financeiro</h3>
+                        <p>Acompanhe receitas, despesas e muito mais.</p>
                     </div>
                 </div>
 
-                <div class="input-group">
-                    <label for="login">E-mail</label>
-                    <div class="input-icon-wrapper">
-                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                            <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
-                        </svg>
-                        <input type="email" id="login" name="email" placeholder="seu@email.com" required>
+                <div class="feature-card">
+                    <div class="feature-icon">💼</div>
+
+                    <div>
+                        <h3>Gestão empresarial</h3>
+                        <p>Organize sua empresa de forma eficiente.</p>
                     </div>
                 </div>
 
-                <div class="input-group">
-                    <label for="senha">Senha</label>
-                    <div class="input-icon-wrapper">
-                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                            <path d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM368 144v48h24c26.5 0 48 21.5 48 48v192c0 26.5-21.5 48-48 48H56c-26.5 0-48-21.5-48-48V240c0-26.5 21.5-48 48-48h24V144c0-70.7 57.3-128 128-128s128 57.3 128 128z"/>
-                        </svg>
-                        <input type="password" id="senha" name="senha" placeholder="••••••••" required>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+
+                    <div>
+                        <h3>Relatórios inteligentes</h3>
+                        <p>Insights completos para melhores decisões.</p>
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Entrar no Sistema</button>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- DIREITA -->
+    <section class="right-side">
+
+        <div class="login-card">
+
+            <div class="top-text">
+                <h2>Bem-vindo</h2>
+                <p>Entre para acessar sua conta</p>
+            </div>
+
+            <form action="menu.html" method="GET" class="login-form">
+
+                <div class="input-group">
+
+                    <label>EMPRESA / CPF / CNPJ</label>
+
+                    <div class="input-box">
+                        <span>🏢</span>
+
+                        <input type="text"
+                        placeholder="Digite a empresa ou CPF/CNPJ"
+                        required>
+                    </div>
+
+                </div>
+
+                <div class="input-group">
+
+                    <label>E-MAIL</label>
+
+                    <div class="input-box">
+                        <span>✉️</span>
+
+                        <input type="email"
+                        placeholder="Digite seu e-mail"
+                        required>
+                    </div>
+
+                </div>
+
+                <div class="input-group">
+
+                    <label>SENHA</label>
+
+                    <div class="input-box">
+                        <span>🔒</span>
+
+                        <input type="password"
+                        placeholder="Digite sua senha"
+                        required>
+
+                        <button type="button" class="eye-btn">
+                            👁
+                        </button>
+                    </div>
+
+                </div>
+
+                <button type="submit" class="btn-login">
+                    Entrar no Sistema
+                </button>
+
+                <a href="menu-t.html" class="btn-test">
+                    🧪 Entrar em modo teste
+                </a>
+
             </form>
 
-            <!-- Ações rápidas -->
-            <footer class="footer-links">
-                <a href="empresa-cadastro.html">Cadastrar empresa</a>
-                <span>•</span>
-                <a href="#">Esqueceu a senha?</a>
-            </footer>
+            <div class="bottom-links">
+                <a href="empresa-cadastro.html">
+                    Cadastrar empresa
+                </a>
+
+                <a href="#">
+                    Esqueceu a senha?
+                </a>
+            </div>
+
         </div>
-    </div>
+
+    </section>
+
+</div>
+
 </body>
 </html>
